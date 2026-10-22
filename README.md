@@ -51,32 +51,36 @@ Windows:
 
 Linux/MacOS:
 ./main
-5. Performance & Benchmark Evaluation.
+## 5. Performance & Benchmark Evaluation
 
-==================================================
-Dataset: retail.txt
-Total Transactions: 88,162
-Minimum Support Threshold: 0.01 (881.62 occurrences)
-==================================================
+| Parameter | Details |
+| :--- | :--- |
+| **Dataset** | `retail.txt` |
+| **Total Transactions** | 88,162 |
+| **Minimum Support Threshold** | 0.01 (881.62 occurrences) |
 
-Running Apriori Algorithm...
-[Apriori] Completed in: 1.37 seconds.
-[Apriori] Total Frequent Itemsets Found: 1,024
+---
 
-Running FP-Growth Algorithm...
-[FP-Growth] Completed in: 0.81 seconds.
-[FP-Growth] Total Frequent Itemsets Found: 1,024
+### Execution Results
 
-==================================================
-Performance Summary:
-- FP-Growth was approximately 1.7x faster than Apriori.
-- Both algorithms generated identical frequent itemset counts.
-==================================================
+* **Apriori Algorithm**
+  * Execution Time: `1.37 seconds`
+  * Frequent Itemsets Found: `1,024`
+
+* **FP-Growth Algorithm**
+  * Execution Time: `0.81 seconds`
+  * Frequent Itemsets Found: `1,024`
+
+---
+
+### Performance Summary
+
+* **FP-Growth** was approximately **1.7x faster** than Apriori.
+* Both algorithms generated an **identical number** of frequent itemsets (`1,024`).
 
 ### Program Execution Screenshot
-Below is the screenshot of the program output comparing Apriori and FP-Growth performance:
 
-![Execution Result](./screenshot 4.7.png)
+![Execution Result](./screenshot4.7.png)
 
 ## 6. Key Findings & Discussion
 
