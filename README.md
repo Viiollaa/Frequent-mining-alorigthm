@@ -80,7 +80,7 @@ Linux/MacOS:
 
 ### Program Execution Screenshot
 
-![Execution Result](./screenshot4.7.png)
+![Execution Result](./Screenshot4.7.png)
 
 ## 6. Key Findings & Discussion
 
