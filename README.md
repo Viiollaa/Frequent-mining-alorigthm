@@ -76,19 +76,19 @@ Linux/MacOS:
 ### Execution Results
 
 * **Apriori Algorithm**
-  * Execution Time: `1.37 seconds`
-  * Frequent Itemsets Found: `1,024`
+  * Execution Time: `1.99 seconds`
+  * Frequent Itemsets Found: `16`
 
 * **FP-Growth Algorithm**
-  * Execution Time: `0.81 seconds`
-  * Frequent Itemsets Found: `1,024`
+  * Execution Time: `1.20 seconds`
+  * Frequent Itemsets Found: `16`
 
 ---
 
 ### Performance Summary
 
-* **FP-Growth** was approximately **1.7x faster** than Apriori.
-* Both algorithms generated an **identical number** of frequent itemsets (`1,024`).
+* **FP-Growth** was approximately **1.6x faster** than Apriori.
+* Both algorithms generated an **identical number** of frequent itemsets (`16`).
 
 ### Program Execution Screenshot
 
