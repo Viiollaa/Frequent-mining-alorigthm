@@ -32,7 +32,6 @@ The input transaction data is sourced from the **SPMF Dataset Repository** (e.g.
   0 1 2 15 16 17
 ## 3.Project Structure
 ```
-.
 ├── main.cpp          # Entry point: handles dataset loading, CLI execution, and benchmarking
 ├── apriori.h         # Declaration of the Apriori mining algorithm and data structures
 ├── apriori.cpp       # Implementation of level-wise candidate generation and support counting
