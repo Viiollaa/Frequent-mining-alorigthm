@@ -97,7 +97,7 @@ Linux/MacOS:
 ## 6. Key Findings & Discussion
 
 ### 1. Execution Speed & Computational Efficiency
-In our empirical benchmark using the `retail.txt` dataset, **FP-Growth** outperformed **Apriori** by completing execution in **$\approx 0.81$ seconds**, compared to **$\approx 1.37$ seconds** for Apriori (approximately **$1.7\times$ faster**).
+In our empirical benchmark using the `retail.txt` dataset, **FP-Growth** outperformed **Apriori** by completing execution in **$\approx 1.20$ seconds**, compared to **$\approx 1.99$ seconds** for Apriori (approximately **$1.6\times$ faster**).
 
 * **Apriori Bottleneck:** The main bottleneck in Apriori stems from its level-wise candidate generation ($C_k$) and repeated database scans. For each candidate level $k$, Apriori must re-scan the entire transaction set to count support values, creating massive I/O overhead as $k$ increases.
 * **FP-Growth Efficiency:** FP-Growth eliminates candidate generation entirely by compressing the dataset into a compact prefix tree structure (**FP-Tree**). By reducing disk/file passes to exactly **two scans**, FP-Growth significantly reduces total execution time.
