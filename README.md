@@ -48,15 +48,21 @@ The input transaction data is sourced from the **SPMF Dataset Repository** (e.g.
 ## 4. How to Compile and run 
 Compilation
 Open your terminal or command prompt in the project root directory and compile the executable:
+```
 g++ main.cpp apriori.cpp fpgrowth.cpp -o main
+```
 
 Execution
 Run the compiled executable:
 Windows: 
+```
 .\main.exe
+```
 
 Linux/MacOS:
+```
 ./main
+```
 ## 5. Performance & Benchmark Evaluation
 
 | Parameter | Details |
