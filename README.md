@@ -31,6 +31,7 @@ The input transaction data is sourced from the **SPMF Dataset Repository** (e.g.
   10 11 12 13 14
   0 1 2 15 16 17
 ## 3.Project Structure
+```
 .
 ├── main.cpp          # Entry point: handles dataset loading, CLI execution, and benchmarking
 ├── apriori.h         # Declaration of the Apriori mining algorithm and data structures
@@ -39,6 +40,7 @@ The input transaction data is sourced from the **SPMF Dataset Repository** (e.g.
 ├── fpgrowth.cpp      # Implementation of FP-Tree construction and conditional pattern mining
 ├── retail.txt        # Sample market basket transaction dataset (SPMF format)
 └── README.md         # Project documentation and performance analysis report
+```
 ## 4. How to Compile and run 
 Compilation
 Open your terminal or command prompt in the project root directory and compile the executable:
