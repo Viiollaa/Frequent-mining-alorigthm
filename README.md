@@ -92,7 +92,7 @@ Linux/MacOS:
 
 ### Program Execution Screenshot
 
-![Execution Result](./Screenshot4.7.png)
+![Execution Result](./3.png)
 
 ## 6. Key Findings & Discussion
 
