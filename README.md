@@ -69,7 +69,7 @@ Linux/MacOS:
 | :--- | :--- |
 | **Dataset** | `retail.txt` |
 | **Total Transactions** | 88,162 |
-| **Minimum Support Threshold** | 0.01 (881.62 occurrences) |
+| **Minimum Support Threshold** | 0.05 (881.62 occurrences) |
 
 ---
 
