@@ -25,6 +25,7 @@ This project operates without third-party libraries or external dependencies. Al
 ![SPMF DATASET](./1.jpg)
 
 ![Retail](./2.jpg)
+![Kosarak](./4.jpg)
 
 The input transaction data is sourced from the **SPMF Dataset Repository** (e.g., `retail.txt`).
 
