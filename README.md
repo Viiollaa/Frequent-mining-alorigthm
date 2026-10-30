@@ -118,7 +118,7 @@ Since the project prompt does not specify a rigid minimum support threshold for 
 
 #### Program Execution Screenshots (`kosarak.txt`):
 * **At Threshold = 0.1:**
-  ![Kosarak Threshold 0.1](./.jpg)
+  ![Kosarak Threshold 0.1](./8.png)
 
 * **At Threshold = 0.05:**
   ![Kosarak Threshold 0.05](./7.png)
