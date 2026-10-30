@@ -20,22 +20,23 @@ This project operates without third-party libraries or external dependencies. Al
 
 ---
 
-## 2. Dataset Format
+## 2. Dataset Format & Configuration
 
 ![SPMF DATASET](./1.jpg)
 
 ![Retail](./2.jpg)
 ![Kosarak](./4.jpg)
 
-The input transaction data is sourced from the **SPMF Dataset Repository** (e.g., `retail.txt`).
+The input transaction data is sourced from the **SPMF Dataset Repository**. To evaluate performance across various scales, this project utilizes multiple datasets (e.g., `retail.txt` for standard market basket analysis and `kosarak.txt` for large-scale clickstream data).
 
-* **Format:** Plain text (`.txt`)
-* **Structure:** Each line represents a single transaction where individual items are represented by space-separated integer IDs.
-* **Example:**
+- **Format:** Plain text (`.txt`)
+- **Structure:** Each line represents a single transaction where individual items are represented by space-separated integer IDs.
+- **Example:**
   ```text
   0 1 2 3 4 5 6 7 8 9
   10 11 12 13 14
   0 1 2 15 16 17
+  
 ## 3.Project Structure
 ```
 ├── main.cpp          # Entry point: handles dataset loading, CLI execution, and benchmarking
@@ -44,10 +45,24 @@ The input transaction data is sourced from the **SPMF Dataset Repository** (e.g.
 ├── fpgrowth.h        # Declaration of the FP-Tree node structures and FP-Growth algorithm
 ├── fpgrowth.cpp      # Implementation of FP-Tree construction and conditional pattern mining
 ├── retail.txt        # Sample market basket transaction dataset (SPMF format)
+├── kosarak.txt       # Large-scale clickstream transaction dataset
 └── README.md         # Project documentation and performance analysis report
 ```
-## 4. How to Compile and run 
-Compilation
+## 4. Compilation
+
+## How to Configure and Switch Datasets in `main.cpp`
+
+To test algorithm performance across different large datasets as required by the project prompt, you can easily switch between datasets (such as `retail.txt` and `kosarak.txt`) and adjust the minimum support threshold directly in the source code.
+
+Open **`main.cpp`** in VS Code and locate the configuration section at the top of the file:
+
+```cpp
+string datasetPath = "retail.txt"; // Change to "kosarak.txt" to test retail dataset
+double minSup = 0.05;             // Adjust threshold here (e.g., 0.1, 0.05)
+```
+![SPMF DATASET](./5.jpg)
+![SPMF DATASET](./6.jpg)
+
 Open your terminal or command prompt in the project root directory and compile the executable:
 ```
 g++ main.cpp apriori.cpp fpgrowth.cpp -o main
