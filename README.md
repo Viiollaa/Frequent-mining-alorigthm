@@ -80,6 +80,13 @@ Linux/MacOS:
 ./main
 ```
 
+> ⚠️ **Important Note (Re-compilation Required):**
+> Whenever you change the dataset configuration (e.g., switching from `retail.txt` to `kosarak.txt`) or modify the threshold value inside `main.cpp`, you **must re-compile the program** before running it so that the executable (`main.exe`) picks up the changes:
+> ```bash
+> g++ main.cpp apriori.cpp fpgrowth.cpp -o main
+> .\main.exe
+> ```
+
 ## 5. Performance & Benchmark Evaluation
 
 ### Experiment 1: Dataset Comparison (`retail.txt`)
@@ -128,10 +135,10 @@ Since the project prompt does not specify a rigid minimum support threshold for 
 ## 6. Key Findings & Discussion
 
 ### 1. Execution Speed & Computational Efficiency
-In our empirical benchmark using the `retail.txt` dataset, **FP-Growth** outperformed **Apriori** by completing execution in **$\approx 1.20$ seconds**, compared to **$\approx 1.99$ seconds** for Apriori (approximately **$1.6\times$ faster**).
-
-* **Apriori Bottleneck:** The main bottleneck in Apriori stems from its level-wise candidate generation ($C_k$) and repeated database scans. For each candidate level $k$, Apriori must re-scan the entire transaction set to count support values, creating massive I/O overhead as $k$ increases.
-* **FP-Growth Efficiency:** FP-Growth eliminates candidate generation entirely by compressing the dataset into a compact prefix tree structure (**FP-Tree**). By reducing disk/file passes to exactly **two scans**, FP-Growth significantly reduces total execution time.
+In our empirical benchmarks, **FP-Growth** consistently outperformed **Apriori** across both datasets (`retail.txt` and `kosarak.txt`):
+- **On `retail.txt` ($0.05$ threshold):** FP-Growth completed execution in **$\approx 1.20$ seconds** compared to **$\approx 1.99$ seconds** for Apriori (approximately **$1.6\times$ faster**).
+- **Apriori Bottleneck:** The main bottleneck in Apriori stems from its level-wise candidate generation ($C_k$) and repeated database scans. For each candidate level $k$, Apriori must re-scan the entire transaction set to count support values, creating massive I/O overhead as $k$ increases.
+- **FP-Growth Efficiency:** FP-Growth eliminates candidate generation entirely by compressing the dataset into a compact prefix tree structure (**FP-Tree**). By reducing disk/file passes to exactly **two scans**, FP-Growth significantly reduces total execution time.
 
 ### 2. Algorithmic Trade-offs
 
@@ -141,9 +148,10 @@ In our empirical benchmark using the `retail.txt` dataset, **FP-Growth** outperf
 | **Memory Overhead** | Low to moderate (holds candidates $C_k$ per pass) | Higher (must hold entire FP-Tree in RAM) |
 | **Implementation Complexity** | Simple & intuitive iterative logic | Higher (requires pointers & recursive tree mining) |
 
-### 3. Impact of Support Threshold (`minSupport`)
-* As the minimum support threshold decreases, Apriori experiences an **exponential growth** in candidate itemsets, leading to potential memory and runtime explosion.
-* FP-Growth handles lower support thresholds much more gracefully because the FP-Tree structure compresses shared transaction paths efficiently.
+### 3. Impact of Support Threshold (`minSupport`) & Scalability
+- **Exploratory Threshold Selection:** Because the assignment does not specify a rigid threshold for large datasets, testing $0.1$ vs. $0.05$ on `kosarak.txt` provides key insights into algorithm scalability under varying candidate density.
+- **Apriori Runtime Explosion:** As the support threshold decreases on dense datasets, Apriori experiences a combinatorial candidate explosion. Dropping the threshold from $0.1$ to $0.05$ on `kosarak.txt` caused Apriori's runtime to surge exponentially from **$1.96\text{ seconds}$** to **$50.58\text{ seconds}$**.
+- **FP-Growth Stability:** FP-Growth handles lower support thresholds much more gracefully. Even when the search space expanded from $9$ to $33$ itemsets, FP-Growth's runtime remained exceptionally stable (**$1.43\text{s}$ at $0.1$ vs. $1.70\text{s}$ at $0.05$**), demonstrating nearly **$30\times$ faster execution** than Apriori under heavy workloads.
 
 ### 4. Correctness Verification
-Both algorithms yielded the exact same number and set of frequent itemsets under identical `minSupport` parameters, confirming the functional correctness of both implementations.
+Across all experimental runs on both `retail.txt` and `kosarak.txt` (at both $0.1$ and $0.05$ thresholds), both algorithms yielded the exact same number and set of frequent itemsets under identical parameters, confirming the functional correctness of both C++ implementations.
