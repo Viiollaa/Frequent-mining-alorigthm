@@ -60,8 +60,8 @@ Open **`main.cpp`** in VS Code and locate the configuration section at the top o
 string datasetPath = "retail.txt"; // Change to "kosarak.txt" to test retail dataset
 double minSup = 0.05;             // Adjust threshold here (e.g., 0.1, 0.05)
 ```
-![SPMF DATASET](./5.jpg)
-![SPMF DATASET](./6.jpg)
+![SPMF DATASET](./5.png)
+![SPMF DATASET](./6.png)
 
 Open your terminal or command prompt in the project root directory and compile the executable:
 ```
@@ -81,34 +81,48 @@ Linux/MacOS:
 ```
 ## 5. Performance & Benchmark Evaluation
 
+## 5. Performance & Benchmark Evaluation
+
+### Experiment 1: Dataset Comparison (`retail.txt`)
 | Parameter | Details |
 | :--- | :--- |
 | **Dataset** | `retail.txt` |
 | **Total Transactions** | 88,162 |
-| **Minimum Support Threshold** | 0.05 (881.62 occurrences) |
+| **Minimum Support Threshold** | 0.05 |
 
----
-
-### Execution Results
-
-* **Apriori Algorithm**
+- **Apriori Algorithm**
   * Execution Time: `1.99 seconds`
   * Frequent Itemsets Found: `16`
 
-* **FP-Growth Algorithm**
+- **FP-Growth Algorithm**
   * Execution Time: `1.20 seconds`
   * Frequent Itemsets Found: `16`
 
+* **Performance Summary (`retail.txt`):**
+  * **FP-Growth** was approximately **1.6x faster** than Apriori[cite: 3].
+  * Both algorithms generated an **identical number** of frequent itemsets (`16`)[cite: 3].
+
+![Retail Execution Result](./3.png)
+
 ---
 
-### Performance Summary
+### Experiment 2: Threshold & Scalability Analysis (`kosarak.txt`)
+Since the project prompt does not specify a rigid minimum support threshold for large datasets, we conducted an exploratory benchmark using two baseline thresholds (**0.1** and **0.05**) on the large `kosarak.txt` dataset.
 
-* **FP-Growth** was approximately **1.6x faster** than Apriori.
-* Both algorithms generated an **identical number** of frequent itemsets (`16`).
+| Minimum Support (`min_sup`) | Algorithm | Execution Time | Frequent Itemsets Found |
+| :--- | :--- | :--- | :--- |
+| **0.1** | Apriori | $1.96\text{ seconds}$ ($1,956,851\text{ }\mu\text{s}$)[cite: 4] | 9[cite: 4] |
+| **0.1** | FP-Growth | $1.43\text{ seconds}$ ($1,433,018\text{ }\mu\text{s}$)[cite: 4] | 9[cite: 4] |
+| **0.05** | Apriori | $50.58\text{ seconds}$ ($50,583,922\text{ }\mu\text{s}$)[cite: 5] | 33[cite: 5] |
+| **0.05** | FP-Growth | $1.70\text{ seconds}$ ($1,702,438\text{ }\mu\text{s}$)[cite: 5] | 33[cite: 5] |
 
-### Program Execution Screenshot
+#### Program Execution Screenshots (`kosarak.txt`):
+* **At Threshold = 0.1:**
+  ![Kosarak Threshold 0.1](./.jpg)
 
-![Execution Result](./3.png)
+* **At Threshold = 0.05:**
+  ![Kosarak Threshold 0.05](./7.png)
+
 
 ## 6. Key Findings & Discussion
 
