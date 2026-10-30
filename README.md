@@ -118,11 +118,11 @@ Since the project prompt does not specify a rigid minimum support threshold for 
   ![Kosarak Threshold 0.05](./7.png)
 
 * **Performance Summary (`kosarak.txt`):**
-* **Impact of Minimum Support Threshold:** Decreasing the threshold from $0.1$ to $0.05$ relaxes the strictness of the mining process, expanding the search space and increasing the number of frequent itemsets found from $9$ to $33$. 
-* **Algorithm Scalability (Apriori vs. FP-Growth):** 
-   * **At $0.1$ Threshold:** Both algorithms perform reasonably well, though FP-Growth ($1.43\text{s}$) is slightly faster than Apriori ($1.96\text{s}$).
-   * **At $0.05$ Threshold:** Apriori suffers from a combinatorial explosion; its execution time skyrockets to over $50\text{ seconds}$ due to the massive overhead of generating candidate itemsets and repeatedly scanning the massive dataset. 
-* **Conclusion:** FP-Growth demonstrates exceptional stability and scalability. Even when the threshold is lowered and the itemset count increases, FP-Growth's execution time barely changes ($1.70\text{ seconds}$), making it nearly **$30\times$ faster** than Apriori in dense data scenarios.
+  * **Impact of Minimum Support Threshold:** Decreasing the threshold from $0.1$ to $0.05$ relaxes the strictness of the mining process, expanding the search space and increasing the number of frequent itemsets found from $9$ to $33$. 
+  * **Algorithm Scalability (Apriori vs. FP-Growth):** 
+     * **At $0.1$ Threshold:** Both algorithms perform reasonably well, though FP-Growth ($1.43\text{s}$) is slightly faster than Apriori ($1.96\text{s}$).
+     * **At $0.05$ Threshold:** Apriori suffers from a combinatorial explosion; its execution time skyrockets to over $50\text{ seconds}$ due to the massive overhead of generating candidate itemsets and repeatedly scanning the massive dataset. 
+  * **Conclusion:** FP-Growth demonstrates exceptional stability and scalability. Even when the threshold is lowered and the itemset count increases, FP-Growth's execution time barely changes ($1.70\text{ seconds}$), making it nearly **$30\times$ faster** than Apriori in dense data scenarios.
 
 
 ## 6. Key Findings & Discussion
