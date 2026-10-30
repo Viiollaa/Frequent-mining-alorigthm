@@ -57,8 +57,8 @@ To test algorithm performance across different large datasets as required by the
 Open **`main.cpp`** in VS Code and locate the configuration section at the top of the file:
 
 ```cpp
-string datasetPath = "retail.txt"; // Change to "kosarak.txt" to test retail dataset
-double minSup = 0.05;             // Adjust threshold here (e.g., 0.1, 0.05)
+string filename = "retail.txt"; // Change to "kosarak.txt" to test retail dataset
+double minSupport = 0.05;             // Adjust threshold here (e.g., 0.1, 0.05)
 ```
 ![SPMF DATASET](./5.png)
 ![SPMF DATASET](./6.png)
@@ -79,29 +79,23 @@ Linux/MacOS:
 ```
 ./main
 ```
-## 5. Performance & Benchmark Evaluation
 
 ## 5. Performance & Benchmark Evaluation
 
 ### Experiment 1: Dataset Comparison (`retail.txt`)
-| Parameter | Details |
-| :--- | :--- |
-| **Dataset** | `retail.txt` |
-| **Total Transactions** | 88,162 |
-| **Minimum Support Threshold** | 0.05 |
+* **Total Transactions:** 88,162
+* **Minimum Support Threshold:** $0.05$ ($881.62$ occurrences)
 
-- **Apriori Algorithm**
-  * Execution Time: `1.99 seconds`
-  * Frequent Itemsets Found: `16`
-
-- **FP-Growth Algorithm**
-  * Execution Time: `1.20 seconds`
-  * Frequent Itemsets Found: `16`
+| Algorithm | Execution Time (Seconds) | Execution Time (Microseconds) | Frequent Itemsets Found |
+| :--- | :--- | :--- | :--- |
+| **Apriori** | $1.99\text{ seconds}$| $1,985,859\text{ }\mu\text{s}$ | $16$ |
+| **FP-Growth** | $1.20\text{ seconds}$ | $1,196,320\text{ }\mu\text{s}$ | $16$ |
 
 * **Performance Summary (`retail.txt`):**
-  * **FP-Growth** was approximately **1.6x faster** than Apriori[cite: 3].
-  * Both algorithms generated an **identical number** of frequent itemsets (`16`)[cite: 3].
+  * **FP-Growth** was approximately **$1.6\times$ faster** than Apriori.
+  * Both algorithms generated an **identical number** of frequent itemsets (`16`).
 
+#### Program Execution Screenshot (`retail.txt`):
 ![Retail Execution Result](./3.png)
 
 ---
@@ -111,10 +105,10 @@ Since the project prompt does not specify a rigid minimum support threshold for 
 
 | Minimum Support (`min_sup`) | Algorithm | Execution Time | Frequent Itemsets Found |
 | :--- | :--- | :--- | :--- |
-| **0.1** | Apriori | $1.96\text{ seconds}$ ($1,956,851\text{ }\mu\text{s}$)[cite: 4] | 9[cite: 4] |
-| **0.1** | FP-Growth | $1.43\text{ seconds}$ ($1,433,018\text{ }\mu\text{s}$)[cite: 4] | 9[cite: 4] |
-| **0.05** | Apriori | $50.58\text{ seconds}$ ($50,583,922\text{ }\mu\text{s}$)[cite: 5] | 33[cite: 5] |
-| **0.05** | FP-Growth | $1.70\text{ seconds}$ ($1,702,438\text{ }\mu\text{s}$)[cite: 5] | 33[cite: 5] |
+| **0.1** | Apriori | $1.96\text{ seconds}$ ($1,956,851\text{ }\mu\text{s}$) | 9 |
+| **0.1** | FP-Growth | $1.43\text{ seconds}$ ($1,433,018\text{ }\mu\text{s}$) | 9 |
+| **0.05** | Apriori | $50.58\text{ seconds}$ ($50,583,922\text{ }\mu\text{s}$) | 33 |
+| **0.05** | FP-Growth | $1.70\text{ seconds}$ ($1,702,438\text{ }\mu\text{s}$) | 33 |
 
 #### Program Execution Screenshots (`kosarak.txt`):
 * **At Threshold = 0.1:**
@@ -122,6 +116,13 @@ Since the project prompt does not specify a rigid minimum support threshold for 
 
 * **At Threshold = 0.05:**
   ![Kosarak Threshold 0.05](./7.png)
+
+* **Performance Summary (`kosarak.txt`):**
+* **Impact of Minimum Support Threshold:** Decreasing the threshold from $0.1$ to $0.05$ relaxes the strictness of the mining process, expanding the search space and increasing the number of frequent itemsets found from $9$ to $33$. 
+* **Algorithm Scalability (Apriori vs. FP-Growth):** 
+   * **At $0.1$ Threshold:** Both algorithms perform reasonably well, though FP-Growth ($1.43\text{s}$) is slightly faster than Apriori ($1.96\text{s}$).
+   * **At $0.05$ Threshold:** Apriori suffers from a combinatorial explosion; its execution time skyrockets to over $50\text{ seconds}$ due to the massive overhead of generating candidate itemsets and repeatedly scanning the massive dataset. 
+* **Conclusion:** FP-Growth demonstrates exceptional stability and scalability. Even when the threshold is lowered and the itemset count increases, FP-Growth's execution time barely changes ($1.70\text{ seconds}$), making it nearly **$30\times$ faster** than Apriori in dense data scenarios.
 
 
 ## 6. Key Findings & Discussion
