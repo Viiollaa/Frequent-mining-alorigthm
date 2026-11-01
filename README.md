@@ -115,7 +115,7 @@ Since the project prompt does not specify a rigid minimum support threshold for 
 | **0.1** | Apriori | $1.96\text{ seconds}$ ($1,956,851\text{ }\mu\text{s}$) | 9 |
 | **0.1** | FP-Growth | $1.43\text{ seconds}$ ($1,433,018\text{ }\mu\text{s}$) | 9 |
 | **0.05** | Apriori | $50.58\text{ seconds}$ ($50,583,922\text{ }\mu\text{s}$) | 33 |
-| **0.05** | FP-Growth | $1.70\text{ seconds}$ ($1,702,438\text{ }\mu\text{s}$) | 33 |
+| **0.05** | FP-Growth | $17.02\text{ seconds}$ ($17,024,338\text{ }\mu\text{s}$) | 33 |
 
 #### Program Execution Screenshots (`kosarak.txt`):
 * **At Threshold = 0.1:**
@@ -129,7 +129,7 @@ Since the project prompt does not specify a rigid minimum support threshold for 
   * **Algorithm Scalability (Apriori vs. FP-Growth):** 
      * **At $0.1$ Threshold:** Both algorithms perform reasonably well, though FP-Growth ($1.43\text{s}$) is slightly faster than Apriori ($1.96\text{s}$).
      * **At $0.05$ Threshold:** Apriori suffers from a combinatorial explosion; its execution time skyrockets to over $50\text{ seconds}$ due to the massive overhead of generating candidate itemsets and repeatedly scanning the massive dataset. 
-  * **Conclusion:** FP-Growth demonstrates exceptional stability and scalability. Even when the threshold is lowered and the itemset count increases, FP-Growth's execution time barely changes ($1.70\text{ seconds}$), making it nearly **$30\times$ faster** than Apriori in dense data scenarios.
+  * **Conclusion:** FP-Growth demonstrates exceptional stability and scalability. Even when the threshold is lowered and the itemset count increases, FP-Growth's execution time barely changes ($17.02\text{ seconds}$), making it nearly **$3\times$ faster** than Apriori in dense data scenarios.
 
 
 ## 6. Key Findings & Discussion
