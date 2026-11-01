@@ -151,7 +151,7 @@ In our empirical benchmarks, **FP-Growth** consistently outperformed **Apriori**
 ### 3. Impact of Support Threshold (`minSupport`) & Scalability
 - **Exploratory Threshold Selection:** Because the assignment does not specify a rigid threshold for large datasets, testing $0.1$ vs. $0.05$ on `kosarak.txt` provides key insights into algorithm scalability under varying candidate density.
 - **Apriori Runtime Explosion:** As the support threshold decreases on dense datasets, Apriori experiences a combinatorial candidate explosion. Dropping the threshold from $0.1$ to $0.05$ on `kosarak.txt` caused Apriori's runtime to surge exponentially from **$1.96\text{ seconds}$** to **$50.58\text{ seconds}$**.
-- **FP-Growth Stability:** FP-Growth handles lower support thresholds much more gracefully. Even when the search space expanded from $9$ to $33$ itemsets, FP-Growth's runtime remained exceptionally stable (**$1.43\text{s}$ at $0.1$ vs. $1.70\text{s}$ at $0.05$**), demonstrating nearly **$30\times$ faster execution** than Apriori under heavy workloads.
+- **FP-Growth Stability:** FP-Growth handles lower support thresholds much more gracefully. Even when the search space expanded from $9$ to $33$ itemsets, FP-Growth's runtime remained exceptionally stable (**$1.43\text{s}$ at $0.1$ vs. $17.02\text{s}$ at $0.05$**), demonstrating nearly **$30\times$ faster execution** than Apriori under heavy workloads.
 
 ### 4. Correctness Verification
 Across all experimental runs on both `retail.txt` and `kosarak.txt` (at both $0.1$ and $0.05$ thresholds), both algorithms yielded the exact same number and set of frequent itemsets under identical parameters, confirming the functional correctness of both C++ implementations.
